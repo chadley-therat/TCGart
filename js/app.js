@@ -76,14 +76,19 @@ function renderArtistGrid() {
     artists = ARTISTS.filter(a =>
       a.name.toLowerCase().includes(q) ||
       a.tags.some(t => t.toLowerCase().includes(q)) ||
-      a.description.toLowerCase().includes(q)
+      a.description.toLowerCase().includes(q) ||
+      (a.era && a.era.toLowerCase().includes(q))
     );
   }
 
   countEl.textContent = `${artists.length} artist${artists.length !== 1 ? "s" : ""}`;
+  const statEl = document.getElementById("stat-artists");
+  if (statEl) statEl.textContent = ARTISTS.length;
+  const statScenes = document.getElementById("stat-scenes");
+  if (statScenes) statScenes.textContent = SCENE_SETS.length;
 
   if (artists.length === 0) {
-    container.innerHTML = emptyState("No artists found", `No results for "${state.searchQuery}"`);
+    container.innerHTML = emptyState("No artists found", `No results for "${escHtml(state.searchQuery)}"`);
     return;
   }
 
@@ -94,13 +99,17 @@ function renderArtistGrid() {
         <img
           id="preview-img-${artist.id}"
           style="display:none"
-          alt="${artist.name}"
+          alt="${escHtml(artist.name)}"
           onload="this.style.display='block'; document.getElementById('preview-spinner-${artist.id}').style.display='none';"
           onerror="this.parentElement.innerHTML='<span style=\\'font-size:2.5rem\\'>🎨</span>'"
         />
       </div>
       <div class="artist-card-body">
         <div class="artist-name">${escHtml(artist.name)}</div>
+        <div class="artist-meta">
+          ${artist.cardCount ? `<span class="artist-stat">${escHtml(artist.cardCount)} cards</span>` : ""}
+          ${artist.era ? `<span class="artist-stat-sep">·</span><span class="artist-era">${escHtml(artist.era)}</span>` : ""}
+        </div>
         <div class="artist-desc">${escHtml(artist.description)}</div>
         <div class="artist-tags">
           ${artist.tags.map(t => `<span class="artist-tag">${escHtml(t)}</span>`).join("")}
@@ -324,11 +333,17 @@ function renderSceneSets() {
 }
 
 function buildSceneSetHTML(scene) {
+  const typeIcon = { "LEGEND": "⚡", "V-UNION": "🔷", "Triptych": "🌴", "Diptych": "🌙", "Panorama": "🗺" }[scene.type] || "🖼";
+  const typeBadge = scene.type ? `<span class="scene-type-badge scene-type-${scene.type.toLowerCase().replace(/[^a-z]/g,'')}">${typeIcon} ${escHtml(scene.type)}</span>` : "";
+
   return `
     <div class="scene-set" id="scene-${scene.id}">
       <div class="scene-set-header">
         <div class="scene-set-title-group">
-          <div class="scene-set-title">${escHtml(scene.title)}</div>
+          <div class="scene-set-title-row">
+            ${typeBadge}
+            <span class="scene-set-title">${escHtml(scene.title)}</span>
+          </div>
           <div class="scene-set-desc">${escHtml(scene.description)}</div>
           <div class="scene-set-tags">
             ${scene.tags.map(t => `<span class="scene-set-tag">${escHtml(t)}</span>`).join("")}
@@ -339,11 +354,11 @@ function buildSceneSetHTML(scene) {
           id="assemble-btn-${scene.id}"
           onclick="toggleAssemble('${scene.id}')"
         >
-          🧩 Assemble Scene
+          🧩 ${escHtml(scene.assembleLabel || "Assemble Scene")}
         </button>
       </div>
       <div class="scene-body">
-        <div class="scene-cards-spread" id="scene-cards-${scene.id}">
+        <div class="scene-cards-spread scene-orient-${escHtml(scene.orientation || 'horizontal')}" id="scene-cards-${scene.id}">
           ${scene.cards.map(c => `
             <div class="scene-card-wrapper" id="scene-wrapper-${scene.id}-${c.id.replace(/[^a-z0-9]/gi,'_')}">
               <div class="scene-card-skeleton" id="scene-skel-${scene.id}-${c.id.replace(/[^a-z0-9]/gi,'_')}"></div>
@@ -352,7 +367,7 @@ function buildSceneSetHTML(scene) {
           `).join("")}
         </div>
         <div class="scene-assembled-banner" id="scene-banner-${scene.id}">
-          ✨ Scene assembled! These cards form a continuous panoramic illustration.
+          ✨ ${escHtml(scene.orientation === "vertical" ? "Cards stacked — the top and bottom halves form one complete illustration." : scene.orientation === "grid" ? "V-UNION assembled — all four pieces reveal the full artwork." : "Scene assembled! These cards form a continuous panoramic illustration.")}
         </div>
       </div>
     </div>
@@ -421,23 +436,26 @@ function openSceneCardLightbox(imageUrl, name, setName) {
 }
 
 function toggleAssemble(sceneId) {
+  const scene = SCENE_SETS.find(s => s.id === sceneId);
   const spread = document.getElementById(`scene-cards-${sceneId}`);
   const btn = document.getElementById(`assemble-btn-${sceneId}`);
   const banner = document.getElementById(`scene-banner-${sceneId}`);
 
   const isAssembled = state.assembledScenes.has(sceneId);
+  const disassembleLabel = scene?.disassembleLabel || "Spread Apart";
+  const assembleLabel = scene?.assembleLabel || "Assemble Scene";
 
   if (isAssembled) {
     state.assembledScenes.delete(sceneId);
     spread.classList.remove("assembling");
     btn.classList.remove("assembled");
-    btn.innerHTML = "🧩 Assemble Scene";
+    btn.innerHTML = `🧩 ${escHtml(assembleLabel)}`;
     banner.classList.remove("visible");
   } else {
     state.assembledScenes.add(sceneId);
     spread.classList.add("assembling");
     btn.classList.add("assembled");
-    btn.innerHTML = "🔀 Spread Apart";
+    btn.innerHTML = `🔀 ${escHtml(disassembleLabel)}`;
     banner.classList.add("visible");
   }
 }

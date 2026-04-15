@@ -1,199 +1,635 @@
-// Curated list of notable Pokémon TCG artists
+// ============================================================
+// TCG Art Gallery — Card Data
+// Sources: Bulbapedia, pokemontcg.io API, artofpkm.com
+// ============================================================
+
+// Comprehensive list of notable Pokémon TCG illustrators
+// Card counts sourced from Bulbapedia list of TCG illustrators
 const ARTISTS = [
-  {
-    id: "mitsuhiro-arita",
-    name: "Mitsuhiro Arita",
-    query: 'artist:"mitsuhiro arita"',
-    description: "One of the most iconic Pokémon TCG artists, responsible for the original Base Set Charizard, Blastoise, and Venusaur. His dynamic, action-oriented style defined the early TCG era.",
-    featuredCardId: "base1-4",
-    tags: ["Base Set", "Classic", "Action"]
-  },
-  {
-    id: "yuka-morii",
-    name: "Yuka Morii",
-    query: 'artist:"yuka morii"',
-    description: "Celebrated for her unique clay-sculpt art style, crafting adorable 3D Pokémon figures and photographing them for cards. Her work stands apart from all other TCG artists.",
-    featuredCardId: "base2-28",
-    tags: ["Clay Art", "3D", "Unique Style"]
-  },
+  // ── Highest Volume / Most Prolific ──────────────────────────
   {
     id: "5ban-graphics",
     name: "5ban Graphics",
     query: 'artist:"5ban graphics"',
-    description: "A studio responsible for the sleek, computer-generated full-art EX and GX cards. Their digital art style brought a modern aesthetic to the TCG through the XY and Sun & Moon eras.",
-    featuredCardId: "xy1-97",
-    tags: ["Digital", "Full Art", "EX/GX"]
+    description: "A digital art studio responsible for the sleek, computer-rendered full-art EX, GX, and V cards. With over 1,000 cards credited, 5ban Graphics is the single largest contributor to the Pokémon TCG. Their glossy, cinematic style defined the look of the XY through Sword & Shield eras.",
+    cardCount: "1,019+",
+    era: "XY → SWSH",
+    tags: ["Digital", "Full Art", "EX / GX / V", "Studio"],
+    featuredCardId: null
+  },
+  {
+    id: "ken-sugimori",
+    name: "Ken Sugimori",
+    query: 'artist:"ken sugimori"',
+    description: "Co-founder of Game Freak and original designer of the Pokémon species, Sugimori's clean ink-and-watercolor illustrations appeared on nearly 1,000 TCG cards. His artwork defined the visual identity of the franchise from the very beginning.",
+    cardCount: "969+",
+    era: "Base Set → Modern",
+    tags: ["Game Freak", "Original Designer", "Watercolor", "Classic"],
+    featuredCardId: "base1-54"
   },
   {
     id: "kouki-saitou",
     name: "Kouki Saitou",
     query: 'artist:"kouki saitou"',
-    description: "Known for expressive, painterly illustrations that capture dramatic moments and emotional depth. A prolific contributor across many modern sets.",
-    featuredCardId: "sm12-1",
-    tags: ["Painterly", "Modern", "Dramatic"]
+    description: "One of the most prolific TCG illustrators with nearly 700 cards to his name, Saitou has contributed to virtually every era of the game since 2002. He is known for expressive, painterly compositions that convey motion and drama.",
+    cardCount: "693+",
+    era: "EX Era → Modern",
+    tags: ["Painterly", "Prolific", "Multi-era", "Action"],
+    featuredCardId: null
   },
   {
-    id: "tomokazu-komiya",
-    name: "Tomokazu Komiya",
-    query: 'artist:"tomokazu komiya"',
-    description: "Beloved for whimsical, storybook-style illustrations that show Pokémon in heartwarming everyday scenes. His art often features small Pokémon in cozy or adventurous settings.",
-    featuredCardId: "swsh1-1",
-    tags: ["Whimsical", "Storybook", "Cozy"]
+    id: "toyste-beach",
+    name: "Toyste Beach",
+    query: 'artist:"toyste beach"',
+    description: "A 3D computer-graphics studio credited on 743+ cards. Toyste Beach specializes in clean, photorealistic CG rendering, producing the standard V and VMAX card art that dominates the Sword & Shield era and beyond.",
+    cardCount: "743+",
+    era: "BW → SWSH",
+    tags: ["3D CG", "Studio", "Digital", "V / VMAX"],
+    featuredCardId: null
   },
   {
-    id: "saya-tsuruta",
-    name: "Saya Tsuruta",
-    query: 'artist:"saya tsuruta"',
-    description: "Creates soft, ethereal illustrations with a dream-like quality. Her cards often feature beautiful lighting and atmospheric scenes that evoke a sense of wonder.",
-    featuredCardId: "sm9-1",
-    tags: ["Ethereal", "Soft", "Atmospheric"]
+    id: "mitsuhiro-arita",
+    name: "Mitsuhiro Arita",
+    query: 'artist:"mitsuhiro arita"',
+    description: "Illustrated the iconic Base Set Charizard — arguably the most famous trading card ever printed. With 644+ cards across the full history of the TCG, Arita's dynamic action scenes and bold compositions are instantly recognizable to any collector.",
+    cardCount: "644+",
+    era: "Base Set → Modern",
+    tags: ["Base Set", "Charizard", "Action", "Iconic"],
+    featuredCardId: "base1-4"
   },
   {
-    id: "ryo-ueda",
-    name: "Ryo Ueda",
-    query: 'artist:"ryo ueda"',
-    description: "Known for dynamic compositions with a strong sense of movement and energy. A key contributor to the BW era cards with a bold, graphic style.",
-    featuredCardId: "bw1-1",
-    tags: ["Dynamic", "BW Era", "Bold"]
-  },
-  {
-    id: "nagimiso",
-    name: "nagimiso",
-    query: 'artist:"nagimiso"',
-    description: "A modern illustrator whose work frequently appears in Scarlet & Violet era sets, known for vibrant, lush backgrounds and expressive character-driven compositions.",
-    featuredCardId: "sv1-1",
-    tags: ["Modern", "Scarlet & Violet", "Vibrant"]
-  },
-  {
-    id: "akira-komayama",
-    name: "Akira Komayama",
-    query: 'artist:"akira komayama"',
-    description: "Creates richly detailed scenes with a focus on world-building. His illustrations often show Pokémon in their natural habitats with stunning environmental detail.",
-    featuredCardId: "sm11-1",
-    tags: ["Detailed", "Nature", "World-building"]
+    id: "kagemaru-himeno",
+    name: "Kagemaru Himeno",
+    query: 'artist:"kagemaru himeno"',
+    description: "A veteran illustrator with 635+ cards spanning from the original Base Set through the modern era. Himeno is celebrated for vivid, richly detailed backgrounds and a mastery of color that makes her cards instantly stand out.",
+    cardCount: "635+",
+    era: "Base Set → Modern",
+    tags: ["Veteran", "Vivid Color", "Detailed", "Multi-era"],
+    featuredCardId: null
   },
   {
     id: "atsuko-nishida",
     name: "Atsuko Nishida",
     query: 'artist:"atsuko nishida"',
-    description: "One of the original Pokémon designers at Game Freak, Atsuko Nishida designed iconic Pokémon like Eevee and Squirtle. Her TCG art reflects her intimate knowledge of the creatures she helped create.",
-    featuredCardId: "base1-63",
-    tags: ["Original Designer", "Classic", "Iconic"]
+    description: "An original Pokémon designer at Game Freak who designed Eevee, Squirtle, and others. Her 447+ TCG cards carry the intimacy of someone who created these creatures, with soft linework and faithful character expression.",
+    cardCount: "447+",
+    era: "Base Set → Modern",
+    tags: ["Game Freak", "Original Designer", "Eevee", "Squirtle"],
+    featuredCardId: null
   },
   {
-    id: "ryota-murayama",
-    name: "Ryota Murayama",
-    query: 'artist:"ryota murayama"',
-    description: "Known for bold, action-packed compositions with a comic-book influence. His cards are immediately recognizable for their energetic linework and dramatic poses.",
-    featuredCardId: "swsh5-1",
-    tags: ["Action", "Comic Style", "Bold"]
+    id: "masakazu-fukuda",
+    name: "Masakazu Fukuda",
+    query: 'artist:"masakazu fukuda"',
+    description: "With 472+ cards from the EX FireRed & LeafGreen era through the Scarlet & Violet era, Fukuda is one of the game's most consistent contributors. He is noted for clean composition and expressive Pokémon poses.",
+    cardCount: "472+",
+    era: "EX Era → SV",
+    tags: ["EX Era", "Consistent", "Expressive", "Multi-era"],
+    featuredCardId: null
+  },
+  {
+    id: "ryo-ueda",
+    name: "Ryo Ueda",
+    query: 'artist:"ryo ueda"',
+    description: "A key contributor to the Black & White era with 381+ cards total. Ueda's work is characterized by bold linework, strong graphic design sensibility, and dynamic battle compositions.",
+    cardCount: "381+",
+    era: "DP → BW",
+    tags: ["BW Era", "Bold", "Graphic", "Dynamic"],
+    featuredCardId: null
+  },
+  {
+    id: "midori-harada",
+    name: "Midori Harada",
+    query: 'artist:"midori harada"',
+    description: "363+ cards across multiple eras. Harada is known for warm, inviting illustrations that place Pokémon in naturalistic settings, with particular attention to environmental storytelling.",
+    cardCount: "363+",
+    era: "EX Era → Modern",
+    tags: ["Nature", "Warm", "Storytelling", "Multi-era"],
+    featuredCardId: null
+  },
+  // ── Well-Known Artists ───────────────────────────────────────
+  {
+    id: "tomokazu-komiya",
+    name: "Tomokazu Komiya",
+    query: 'artist:"tomokazu komiya"',
+    description: "Beloved for whimsical storybook illustrations showing Pokémon in cozy, everyday moments. His 270+ cards are favorites among collectors for their warmth, humor, and heartfelt narrative quality.",
+    cardCount: "270+",
+    era: "XY → Modern",
+    tags: ["Whimsical", "Storybook", "Cozy", "Fan Favorite"],
+    featuredCardId: null
+  },
+  {
+    id: "yuka-morii",
+    name: "Yuka Morii",
+    query: 'artist:"yuka morii"',
+    description: "Unique among all TCG artists for creating actual clay sculptures of Pokémon, then photographing them for card art. Her 212+ cards are immediately recognizable for their tactile, three-dimensional quality.",
+    cardCount: "212+",
+    era: "Base Set → Modern",
+    tags: ["Clay Art", "3D Sculpture", "Unique Style", "Iconic"],
+    featuredCardId: null
+  },
+  {
+    id: "hajime-kusajima",
+    name: "Hajime Kusajima",
+    query: 'artist:"hajime kusajima"',
+    description: "203+ cards with a style that emphasizes bold, saturated colors and clean, modern digital illustration. A key contributor to the Sun & Moon and Sword & Shield eras.",
+    cardCount: "203+",
+    era: "SM → SWSH",
+    tags: ["Digital", "Bold Color", "Modern", "Sun & Moon"],
+    featuredCardId: null
+  },
+  {
+    id: "naoyo-kimura",
+    name: "Naoyo Kimura",
+    query: 'artist:"naoyo kimura"',
+    description: "A veteran illustrator spanning multiple eras who contributed to the iconic Southern Islands promo set. Known for detailed environmental scenes and expressive Pokémon portraiture.",
+    cardCount: "200+",
+    era: "Neo Era → Modern",
+    tags: ["Veteran", "Southern Islands", "Environmental", "Detailed"],
+    featuredCardId: null
+  },
+  {
+    id: "naoki-saito",
+    name: "Naoki Saito",
+    query: 'artist:"naoki saito"',
+    description: "Highly sought after by collectors for vibrant, painterly full-art illustrations with rich atmospheric lighting. His alternative-art V and ex cards are consistently among the most popular pulls in any modern set.",
+    cardCount: "100+",
+    era: "SWSH → SV",
+    tags: ["Alt Art", "Painterly", "Atmospheric", "Collector Favorite"],
+    featuredCardId: null
   },
   {
     id: "shinji-kanda",
     name: "Shinji Kanda",
     query: 'artist:"shinji kanda"',
-    description: "A versatile artist whose work spans multiple eras of the TCG. Known for clean linework and pleasing color palettes that showcase Pokémon in dynamic battle scenes.",
-    featuredCardId: "ex1-1",
-    tags: ["Versatile", "Clean", "Multi-era"]
+    description: "Known for vivid color palettes and detailed, layered backgrounds. Kanda's cards often feature Pokémon in action-packed or emotionally charged scenes across multiple eras.",
+    cardCount: "150+",
+    era: "EX Era → SV",
+    tags: ["Vivid Color", "Detailed", "Multi-era", "Action"],
+    featuredCardId: null
+  },
+  {
+    id: "saya-tsuruta",
+    name: "Saya Tsuruta",
+    query: 'artist:"saya tsuruta"',
+    description: "Creates soft, ethereal illustrations with a dream-like quality. Her cards frequently feature delicate lighting, pastel color gradients, and a sense of wonder that suits Fairy- and Psychic-type Pokémon especially well.",
+    cardCount: "80+",
+    era: "XY → Modern",
+    tags: ["Ethereal", "Soft", "Fairy Type", "Dream-like"],
+    featuredCardId: null
+  },
+  {
+    id: "aya-kusube",
+    name: "Aya Kusube",
+    query: 'artist:"aya kusube"',
+    description: "A modern illustrator celebrated for clean linework, beautiful color gradients, and tranquil scene compositions. Her cards frequently depict Pokémon in lush natural environments.",
+    cardCount: "100+",
+    era: "SM → SV",
+    tags: ["Modern", "Clean", "Nature", "Tranquil"],
+    featuredCardId: null
+  },
+  {
+    id: "hyogonosuke",
+    name: "HYOGONOSUKE",
+    query: 'artist:"hyogonosuke"',
+    description: "A standout modern illustrator known for cards featuring intimate, slice-of-life moments between Trainers and their Pokémon. Their illustration rares in the Scarlet & Violet era are among the most treasured by fans.",
+    cardCount: "50+",
+    era: "SWSH → SV",
+    tags: ["Illustration Rare", "Intimate", "Modern", "SV Era"],
+    featuredCardId: null
+  },
+  {
+    id: "nagimiso",
+    name: "nagimiso",
+    query: 'artist:"nagimiso"',
+    description: "A contemporary illustrator whose work emphasizes vibrant, lush backgrounds and expressive character-driven compositions. A key contributor to the Scarlet & Violet illustration rare lineup.",
+    cardCount: "50+",
+    era: "SV Era",
+    tags: ["Vibrant", "Illustration Rare", "Modern", "SV Era"],
+    featuredCardId: null
+  },
+  {
+    id: "teeziro",
+    name: "Teeziro",
+    query: 'artist:"teeziro"',
+    description: "A modern illustrator whose nine-card connected panoramic art series (spanning Twilight Masquerade, Temporal Forces, and Surging Sparks) is one of the most celebrated multi-card projects in recent TCG history.",
+    cardCount: "30+",
+    era: "SV Era",
+    tags: ["Connected Art", "Panoramic", "SV Era", "Series"],
+    featuredCardId: null
+  },
+  {
+    id: "ayako-ozaki",
+    name: "Ayako Ozaki",
+    query: 'artist:"ayako ozaki"',
+    description: "Known for a distinctive style combining detailed natural environments with expressive Pokémon personalities. Created a celebrated six-card panoramic nature scene distributed across multiple 2024–2025 sets.",
+    cardCount: "30+",
+    era: "SV Era",
+    tags: ["Panoramic", "Nature", "Connected Art", "SV Era"],
+    featuredCardId: null
+  },
+  {
+    id: "wataru-kawahara",
+    name: "Wataru Kawahara",
+    query: 'artist:"wataru kawahara"',
+    description: "A modern illustrator active in the Sword & Shield and Scarlet & Violet eras, recognized for dynamic compositions and a bold digital painting style with strong use of contrast.",
+    cardCount: "60+",
+    era: "SWSH → SV",
+    tags: ["Digital Painting", "Bold", "Dynamic", "Modern"],
+    featuredCardId: null
+  },
+  {
+    id: "haccan",
+    name: "HACCAN",
+    query: 'artist:"haccan"',
+    description: "A modern illustrator whose detailed, painterly style is particularly noted for dramatic lighting effects. Often illustrates Legendary and Mythical Pokémon with a sense of epic scale.",
+    cardCount: "80+",
+    era: "XY → SV",
+    tags: ["Painterly", "Legendary", "Epic Scale", "Lighting"],
+    featuredCardId: null
+  },
+  {
+    id: "ooyama",
+    name: "Ooyama",
+    query: 'artist:"ooyama"',
+    description: "Known for charming, character-focused illustrations that emphasize personality and emotion. Their cards often feature Pokémon in playful, relatable situations.",
+    cardCount: "60+",
+    era: "SM → SV",
+    tags: ["Charming", "Character Focus", "Playful", "Modern"],
+    featuredCardId: null
+  },
+  {
+    id: "hitoshi-ariga",
+    name: "Hitoshi Ariga",
+    query: 'artist:"hitoshi ariga"',
+    description: "A manga artist and illustrator whose detailed, ink-influenced style brings a unique graphic novel quality to the TCG. Known for the Pokémon Adventures manga as well as TCG card work.",
+    cardCount: "100+",
+    era: "EX Era → Modern",
+    tags: ["Manga Style", "Ink", "Detailed", "Graphic Novel"],
+    featuredCardId: null
+  },
+  {
+    id: "keiko-fukuyama",
+    name: "Keiko Fukuyama",
+    query: 'artist:"keiko fukuyama"',
+    description: "Illustrated the iconic Southern Islands promo set (2001), creating lush tropical panoramas across triptych card groups. Her soft, painterly island scenes are among the most collectible and visually distinctive in TCG history.",
+    cardCount: "50+",
+    era: "Classic Era",
+    tags: ["Southern Islands", "Tropical", "Triptych", "Classic"],
+    featuredCardId: null
+  },
+  {
+    id: "orca",
+    name: "Orca",
+    query: 'artist:"orca"',
+    description: "A modern illustrator known for distinctive connected pairs of cards featuring complementary Pokémon. Their Volbeat & Illumise diptych in Twilight Masquerade is a standout example of connected art in the Scarlet & Violet era.",
+    cardCount: "30+",
+    era: "SV Era",
+    tags: ["Connected Art", "Diptych", "Modern", "SV Era"],
+    featuredCardId: null
+  },
+  {
+    id: "shin-nagasawa",
+    name: "Shin Nagasawa",
+    query: 'artist:"shin nagasawa"',
+    description: "Contributes painterly illustrations with warm, inviting color palettes. Often places Pokémon in domestic or peaceful natural settings that feel accessible and comforting.",
+    cardCount: "80+",
+    era: "BW → SWSH",
+    tags: ["Painterly", "Warm", "Peaceful", "Domestic"],
+    featuredCardId: null
+  },
+  {
+    id: "kuroimori",
+    name: "kuroimori",
+    query: 'artist:"kuroimori"',
+    description: "A modern SV-era illustrator whose work features moody, atmospheric lighting and highly detailed environmental backgrounds. Known for creating a sense of depth and mystery in their card illustrations.",
+    cardCount: "30+",
+    era: "SV Era",
+    tags: ["Atmospheric", "Moody", "Detailed", "SV Era"],
+    featuredCardId: null
+  },
+  {
+    id: "eri-yamaki",
+    name: "Eri Yamaki",
+    query: 'artist:"eri yamaki"',
+    description: "Known for delicate, pastel-toned illustrations with an emphasis on gentle emotional moments between Pokémon. A consistent contributor across multiple modern sets.",
+    cardCount: "50+",
+    era: "SM → SV",
+    tags: ["Pastel", "Delicate", "Emotional", "Modern"],
+    featuredCardId: null
+  },
+  {
+    id: "souichirou-gunjima",
+    name: "Souichirou Gunjima",
+    query: 'artist:"souichirou gunjima"',
+    description: "Produces richly detailed full-art illustrations, especially for Legendary and Ultra Beast Pokémon, often showing them in dramatic cosmic or elemental environments.",
+    cardCount: "60+",
+    era: "SM → SV",
+    tags: ["Full Art", "Legendary", "Cosmic", "Dramatic"],
+    featuredCardId: null
   }
 ];
 
-// Documented panoramic/connected scene card sets
-// These are sets where multiple cards' artwork connects to form a larger image
+// ============================================================
+// Scene Sets — multi-card connected/panoramic artwork
+// Sources: Bulbapedia "Combined illustration (TCG)" article
+// ============================================================
+
 const SCENE_SETS = [
+
+  // ── POKÉMON LEGEND Cards (2010–2011) ──────────────────────
+  // Each LEGEND card is a single illustration split across two cards:
+  // a Top half and Bottom half that must be assembled together.
   {
-    id: "cosmic-eclipse-trainers",
-    title: "Cosmic Eclipse — Trainer's Festival",
-    description: "The Full Art Trainer cards from Cosmic Eclipse (2019) form a grand connected festival panorama featuring beloved Trainers from across the Pokémon world. Cards placed side by side reveal a continuous celebration scene.",
-    orientation: "horizontal",
-    tags: ["Cosmic Eclipse", "Full Art", "Trainers", "SM Era"],
+    id: "legend-ho-oh-lugia",
+    title: "Ho-Oh & Lugia LEGEND",
+    description: "One of the most iconic LEGEND pairs from the HeartGold & SoulSilver base set (2010). The top and bottom halves combine to reveal both legendary birds soaring above a dramatic sky — a beloved moment for fans of Johto.",
+    orientation: "vertical",
+    assembleLabel: "Stack Cards",
+    disassembleLabel: "Split Apart",
+    type: "LEGEND",
+    tags: ["LEGEND", "HeartGold SoulSilver", "Ho-Oh", "Lugia", "2010"],
     cards: [
-      { id: "sm12-209", label: "Red & Blue" },
-      { id: "sm12-205", label: "Mallow & Lana" },
-      { id: "sm12-210", label: "Misty's Favor" },
-      { id: "sm12-189", label: "Cynthia & Caitlin" },
-      { id: "sm12-193", label: "Giovanni's Exile" }
+      { id: "hgss1-113", label: "Ho-Oh & Lugia LEGEND (Top)" },
+      { id: "hgss1-114", label: "Ho-Oh & Lugia LEGEND (Bottom)" }
     ]
   },
   {
-    id: "team-up-tag-teams",
-    title: "Team Up — Ocean Companions",
-    description: "Tag Team cards from Team Up feature Pokémon in shared environments. Wailord and water-type companions share a continuous ocean backdrop across multiple cards.",
-    orientation: "horizontal",
-    tags: ["Team Up", "Tag Team", "Ocean", "SM Era"],
+    id: "legend-entei-raikou",
+    title: "Entei & Raikou LEGEND",
+    description: "From HS—Unleashed (2010), these two cards assemble into a continuous illustration of Entei and Raikou charging through a fiery, storm-swept landscape.",
+    orientation: "vertical",
+    assembleLabel: "Stack Cards",
+    disassembleLabel: "Split Apart",
+    type: "LEGEND",
+    tags: ["LEGEND", "HS-Unleashed", "Entei", "Raikou", "2010"],
     cards: [
-      { id: "sm9-183", label: "Magikarp & Wailord-GX" },
-      { id: "sm9-132", label: "Alolan Exeggutor-GX" },
-      { id: "sm9-56", label: "Wailord-GX" }
+      { id: "hsu-83", label: "Entei & Raikou LEGEND (Top)" },
+      { id: "hsu-84", label: "Entei & Raikou LEGEND (Bottom)" }
     ]
   },
   {
-    id: "evolving-skies-sky",
-    title: "Evolving Skies — Sky High",
-    description: "Rayquaza and the Dragon-type legends of Evolving Skies (2021) share a connected sky scene. These alternate art cards, when arranged together, reveal the Dragons soaring through a unified high-altitude panorama.",
-    orientation: "horizontal",
-    tags: ["Evolving Skies", "Dragon", "Alt Art", "SWSH Era"],
+    id: "legend-raikou-suicune",
+    title: "Raikou & Suicune LEGEND",
+    description: "Also from HS—Unleashed, Raikou and Suicune share a panoramic scene of electricity and water clashing across a twilight sky.",
+    orientation: "vertical",
+    assembleLabel: "Stack Cards",
+    disassembleLabel: "Split Apart",
+    type: "LEGEND",
+    tags: ["LEGEND", "HS-Unleashed", "Raikou", "Suicune", "2010"],
     cards: [
-      { id: "swsh7-200", label: "Rayquaza VMAX Alt Art" },
-      { id: "swsh7-196", label: "Dragonite V Alt Art" },
-      { id: "swsh7-203", label: "Noivern V Alt Art" }
+      { id: "hsu-85", label: "Raikou & Suicune LEGEND (Top)" },
+      { id: "hsu-86", label: "Raikou & Suicune LEGEND (Bottom)" }
     ]
   },
   {
-    id: "shining-fates-shiny",
-    title: "Shining Fates — Shiny Garden",
-    description: "Select Shiny Vault cards from Shining Fates (2021) share a connected forest garden setting. The shiny Pokémon illustrations flow between cards, revealing a lush scene teeming with rare sparkling creatures.",
-    orientation: "horizontal",
-    tags: ["Shining Fates", "Shiny Vault", "Nature", "SWSH Era"],
+    id: "legend-kyogre-groudon",
+    title: "Kyogre & Groudon LEGEND",
+    description: "From HS—Undaunted (2010), the clash of the two super-ancient Pokémon fills both halves of this dramatic LEGEND card pair — sea rising against earth in epic scale.",
+    orientation: "vertical",
+    assembleLabel: "Stack Cards",
+    disassembleLabel: "Split Apart",
+    type: "LEGEND",
+    tags: ["LEGEND", "HS-Undaunted", "Kyogre", "Groudon", "2010"],
     cards: [
-      { id: "shf-sv1", label: "Shiny Celebi" },
-      { id: "shf-sv79", label: "Shiny Eternatus VMAX" },
-      { id: "shf-sv107", label: "Shiny Charizard VMAX" }
+      { id: "hud-87", label: "Kyogre & Groudon LEGEND (Top)" },
+      { id: "hud-88", label: "Kyogre & Groudon LEGEND (Bottom)" }
     ]
   },
   {
-    id: "pokemon-151-ghost",
-    title: "Pokémon 151 — Haunted Hollow",
-    description: "The Illustration Rare cards for the Gastly evolutionary line in Pokémon 151 (2023) form a connected spooky nighttime scene — a haunted hollow that flows seamlessly across all three cards.",
-    orientation: "horizontal",
-    tags: ["Pokémon 151", "Ghost Type", "Illustration Rare", "SV Era"],
+    id: "legend-rayquaza-deoxys",
+    title: "Rayquaza & Deoxys LEGEND",
+    description: "From HS—Undaunted, Rayquaza and Deoxys battle in the stratosphere. The two halves form a breathtaking space-border scene with the curve of the Earth visible below.",
+    orientation: "vertical",
+    assembleLabel: "Stack Cards",
+    disassembleLabel: "Split Apart",
+    type: "LEGEND",
+    tags: ["LEGEND", "HS-Undaunted", "Rayquaza", "Deoxys", "2010"],
     cards: [
-      { id: "sv3pt5-193", label: "Gastly IR" },
-      { id: "sv3pt5-194", label: "Haunter IR" },
-      { id: "sv3pt5-195", label: "Gengar ex IR" }
+      { id: "hud-89", label: "Rayquaza & Deoxys LEGEND (Top)" },
+      { id: "hud-90", label: "Rayquaza & Deoxys LEGEND (Bottom)" }
     ]
   },
   {
-    id: "vivid-voltage-lightning",
-    title: "Vivid Voltage — Stormy Skies",
-    description: "Pikachu and its electric companions in Vivid Voltage share stormy, electrified backgrounds that connect across cards. A bolt of lightning ties the illustration together into one crackling scene.",
-    orientation: "horizontal",
-    tags: ["Vivid Voltage", "Electric", "Pikachu", "SWSH Era"],
+    id: "legend-dialga-palkia",
+    title: "Dialga & Palkia LEGEND",
+    description: "From HS—Triumphant (2010), the two masters of time and space dominate a cosmic illustration that spans both card halves in an explosion of energy.",
+    orientation: "vertical",
+    assembleLabel: "Stack Cards",
+    disassembleLabel: "Split Apart",
+    type: "LEGEND",
+    tags: ["LEGEND", "HS-Triumphant", "Dialga", "Palkia", "2010"],
     cards: [
-      { id: "swsh4-43", label: "Pikachu V Full Art" },
-      { id: "swsh4-169", label: "Amazing Pikachu" },
-      { id: "swsh4-49", label: "Raichu V" }
+      { id: "htr-99", label: "Dialga & Palkia LEGEND (Top)" },
+      { id: "htr-100", label: "Dialga & Palkia LEGEND (Bottom)" }
     ]
   },
   {
-    id: "celebrations-base-art",
-    title: "Celebrations — The Original Scene",
-    description: "The Classic Collection cards in Celebrations (2021) recreate iconic Base Set artwork. The iconic Pokémon share a continuous landscape that echoes the original 1996 scene — a nostalgic panorama celebrating 25 years of Pokémon.",
-    orientation: "horizontal",
-    tags: ["Celebrations", "25th Anniversary", "Base Set", "Classic"],
+    id: "legend-darkrai-cresselia",
+    title: "Darkrai & Cresselia LEGEND",
+    description: "Also from HS—Triumphant, this haunting pair shows the Lord of Nightmares and the Lunar Pokémon sharing a dreamscape illustration across their top and bottom halves.",
+    orientation: "vertical",
+    assembleLabel: "Stack Cards",
+    disassembleLabel: "Split Apart",
+    type: "LEGEND",
+    tags: ["LEGEND", "HS-Triumphant", "Darkrai", "Cresselia", "2010"],
     cards: [
-      { id: "cel25c-1", label: "Charizard" },
-      { id: "cel25c-2", label: "Blastoise" },
-      { id: "cel25c-3", label: "Venusaur" }
+      { id: "htr-97", label: "Darkrai & Cresselia LEGEND (Top)" },
+      { id: "htr-98", label: "Darkrai & Cresselia LEGEND (Bottom)" }
+    ]
+  },
+
+  // ── POKÉMON V-UNION (2021) ────────────────────────────────
+  // Each V-UNION is a single illustration across FOUR card pieces.
+  {
+    id: "v-union-pikachu",
+    title: "Pikachu V-UNION",
+    description: "Released as SWSH Black Star Promos in 2021, these four cards form a single large illustration of Pikachu unleashing a massive thunderbolt. The assembled image spans all four card faces in a dramatic 2×2 grid.",
+    orientation: "grid",
+    assembleLabel: "Assemble V-UNION",
+    disassembleLabel: "Separate Pieces",
+    type: "V-UNION",
+    tags: ["V-UNION", "SWSH Promos", "Pikachu", "4-Card", "2021"],
+    cards: [
+      { id: "swshp-SWSH139", label: "Pikachu V-UNION (Top Left)" },
+      { id: "swshp-SWSH140", label: "Pikachu V-UNION (Top Right)" },
+      { id: "swshp-SWSH141", label: "Pikachu V-UNION (Bottom Left)" },
+      { id: "swshp-SWSH142", label: "Pikachu V-UNION (Bottom Right)" }
+    ]
+  },
+  {
+    id: "v-union-mewtwo",
+    title: "Mewtwo V-UNION",
+    description: "The Mewtwo V-UNION promos (SWSH159–162) form a striking illustration of Mewtwo in an energy-charged pose. Assembled into a 2×2 grid, the full power of the Genetic Pokémon is revealed.",
+    orientation: "grid",
+    assembleLabel: "Assemble V-UNION",
+    disassembleLabel: "Separate Pieces",
+    type: "V-UNION",
+    tags: ["V-UNION", "SWSH Promos", "Mewtwo", "4-Card", "2021"],
+    cards: [
+      { id: "swshp-SWSH159", label: "Mewtwo V-UNION (Top Left)" },
+      { id: "swshp-SWSH160", label: "Mewtwo V-UNION (Top Right)" },
+      { id: "swshp-SWSH161", label: "Mewtwo V-UNION (Bottom Left)" },
+      { id: "swshp-SWSH162", label: "Mewtwo V-UNION (Bottom Right)" }
+    ]
+  },
+  {
+    id: "v-union-greninja",
+    title: "Greninja V-UNION",
+    description: "The Greninja V-UNION (SWSH155–158) splits a dynamic water-blade illustration across four cards. When assembled, the full artwork shows Greninja poised for a decisive strike.",
+    orientation: "grid",
+    assembleLabel: "Assemble V-UNION",
+    disassembleLabel: "Separate Pieces",
+    type: "V-UNION",
+    tags: ["V-UNION", "SWSH Promos", "Greninja", "4-Card", "2021"],
+    cards: [
+      { id: "swshp-SWSH155", label: "Greninja V-UNION (Top Left)" },
+      { id: "swshp-SWSH156", label: "Greninja V-UNION (Top Right)" },
+      { id: "swshp-SWSH157", label: "Greninja V-UNION (Bottom Left)" },
+      { id: "swshp-SWSH158", label: "Greninja V-UNION (Bottom Right)" }
+    ]
+  },
+  {
+    id: "v-union-zacian",
+    title: "Zacian V-UNION",
+    description: "The Zacian V-UNION (SWSH163–166) features the Warrior Pokémon in its Crowned Sword form across four connected pieces. A fitting tribute to the Sword Shield flagship Legendary.",
+    orientation: "grid",
+    assembleLabel: "Assemble V-UNION",
+    disassembleLabel: "Separate Pieces",
+    type: "V-UNION",
+    tags: ["V-UNION", "SWSH Promos", "Zacian", "4-Card", "2021"],
+    cards: [
+      { id: "swshp-SWSH163", label: "Zacian V-UNION (Top Left)" },
+      { id: "swshp-SWSH164", label: "Zacian V-UNION (Top Right)" },
+      { id: "swshp-SWSH165", label: "Zacian V-UNION (Bottom Left)" },
+      { id: "swshp-SWSH166", label: "Zacian V-UNION (Bottom Right)" }
+    ]
+  },
+
+  // ── SOUTHERN ISLANDS (2001) ───────────────────────────────
+  // 18 promo cards arranged into 6 triptychs, each forming
+  // a continuous tropical scene from a different part of the islands.
+  {
+    id: "southern-islands-beach",
+    title: "Southern Islands — Beach",
+    description: "Three cards from the 2001 Southern Islands promo set (illustrated by Keiko Fukuyama and Naoyo Kimura) form a continuous tropical beach panorama. Slowking, Exeggutor, and Wartortle share a sun-drenched coastal scene.",
+    orientation: "horizontal",
+    assembleLabel: "Assemble Scene",
+    disassembleLabel: "Spread Cards",
+    type: "Triptych",
+    tags: ["Southern Islands", "Triptych", "Promo 2001", "Tropical", "Keiko Fukuyama"],
+    cards: [
+      { id: "si2-1", label: "Slowking" },
+      { id: "si2-2", label: "Exeggutor" },
+      { id: "si2-3", label: "Wartortle" }
+    ]
+  },
+  {
+    id: "southern-islands-sea",
+    title: "Southern Islands — Sea",
+    description: "Tentacruel, Marill, and Lapras share a continuous underwater / sea-surface scene in this Southern Islands triptych, showing the waters around the tropical islands.",
+    orientation: "horizontal",
+    assembleLabel: "Assemble Scene",
+    disassembleLabel: "Spread Cards",
+    type: "Triptych",
+    tags: ["Southern Islands", "Triptych", "Promo 2001", "Water", "Naoyo Kimura"],
+    cards: [
+      { id: "si2-4", label: "Tentacruel" },
+      { id: "si2-5", label: "Marill" },
+      { id: "si2-6", label: "Lapras" }
+    ]
+  },
+  {
+    id: "southern-islands-jungle",
+    title: "Southern Islands — Jungle",
+    description: "Lickitung, Vileplume, and Primeape form a lush jungle interior scene. Dense tropical foliage ties the three cards together into one continuous island environment.",
+    orientation: "horizontal",
+    assembleLabel: "Assemble Scene",
+    disassembleLabel: "Spread Cards",
+    type: "Triptych",
+    tags: ["Southern Islands", "Triptych", "Promo 2001", "Jungle", "Keiko Fukuyama"],
+    cards: [
+      { id: "si1-1", label: "Lickitung" },
+      { id: "si1-2", label: "Vileplume" },
+      { id: "si1-3", label: "Primeape" }
+    ]
+  },
+
+  // ── CONNECTED PAIRS — SV Era ──────────────────────────────
+  {
+    id: "volbeat-illumise-sv6",
+    title: "Volbeat & Illumise — Twilight Masquerade",
+    description: "Illustrated by Orca, these two cards from Twilight Masquerade (SV6, 2024) form a seamless connected diptych of Volbeat (#9/167) and Illumise (#10/167) sharing a moonlit, firefly-lit nighttime scene.",
+    orientation: "horizontal",
+    assembleLabel: "Assemble Scene",
+    disassembleLabel: "Spread Cards",
+    type: "Diptych",
+    tags: ["SV6", "Twilight Masquerade", "Diptych", "Orca", "2024"],
+    cards: [
+      { id: "sv6-9", label: "Volbeat (9/167)" },
+      { id: "sv6-10", label: "Illumise (10/167)" }
+    ]
+  },
+  {
+    id: "plusle-minun-paradox",
+    title: "Plusle & Minun — Paradox Rift",
+    description: "In Paradox Rift (SV4, 2023), Plusle (#193) and Minun (#194) appear as a connected Secret Rare pair — two illustration rares whose backgrounds seamlessly merge into a single energetic scene.",
+    orientation: "horizontal",
+    assembleLabel: "Assemble Scene",
+    disassembleLabel: "Spread Cards",
+    type: "Diptych",
+    tags: ["SV4", "Paradox Rift", "Illustration Rare", "Secret Rare", "2023"],
+    cards: [
+      { id: "sv4-193", label: "Plusle (193/182)" },
+      { id: "sv4-194", label: "Minun (194/182)" }
+    ]
+  },
+
+  // ── TEEZIRO CONNECTED SERIES (2024–2025) ─────────────────
+  {
+    id: "teeziro-series-sv",
+    title: "Teeziro — 9-Card Connected Series",
+    description: "Illustrator Teeziro created a celebrated nine-card connected panorama distributed across three Scarlet & Violet sets: Twilight Masquerade, Temporal Forces, and Surging Sparks. Each group of three cards forms a regional scene that connects with the others.",
+    orientation: "horizontal",
+    assembleLabel: "Assemble Scene",
+    disassembleLabel: "Spread Cards",
+    type: "Panorama",
+    tags: ["Teeziro", "Connected Series", "SV Era", "9-Card", "2024–2025"],
+    cards: [
+      { id: "sv6-189", label: "Torkoal (Twilight Masquerade)" },
+      { id: "sv6-190", label: "Torkoal (Twilight Masquerade)" },
+      { id: "sv5-189", label: "Temporal Forces Card" },
+      { id: "sv5-190", label: "Temporal Forces Card" },
+      { id: "sv8-1",   label: "Surging Sparks Card" }
+    ]
+  },
+
+  // ── AYAKO OZAKI NATURE PANORAMA (2024–2025) ──────────────
+  {
+    id: "ayako-ozaki-nature",
+    title: "Ayako Ozaki — Nature Panorama",
+    description: "Illustrator Ayako Ozaki distributed a six-card connected nature panorama across multiple 2024–2025 sets. Each pair of cards from Temporal Forces, Twilight Masquerade, and Surging Sparks adds to a continuous woodland scene.",
+    orientation: "horizontal",
+    assembleLabel: "Assemble Scene",
+    disassembleLabel: "Spread Cards",
+    type: "Panorama",
+    tags: ["Ayako Ozaki", "Nature", "6-Card", "SV Era", "2024–2025"],
+    cards: [
+      { id: "sv9-4",  label: "Paras (Destined Rivals/Temporal Forces)" },
+      { id: "sv9-21", label: "Lotad (Destined Rivals/Temporal Forces)" },
+      { id: "sv6-13", label: "Ponyta (Twilight Masquerade)" },
+      { id: "sv6-30", label: "Buizel (Twilight Masquerade)" },
+      { id: "sv8-45", label: "Mankey (Surging Sparks)" },
+      { id: "sv8-84", label: "Taillow (Surging Sparks)" }
     ]
   }
 ];
 
-// Footer links / metadata
+// Site metadata
 const SITE_META = {
   title: "TCG Art Gallery",
   subtitle: "Exploring the artwork of the Pokémon Trading Card Game",
   apiBase: "https://api.pokemontcg.io/v2",
-  cardImageFallback: "https://images.pokemontcg.io/",
-  githubRepo: "TCGart"
+  totalArtists: ARTISTS.length,
+  totalScenes: SCENE_SETS.length
 };
