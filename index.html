@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TCG Art Gallery — Pokémon Card Artwork</title>
+  <meta name="description" content="Explore Pokémon Trading Card Game artwork by artist, and discover panoramic scenes that span multiple cards." />
+  <meta property="og:title" content="TCG Art Gallery" />
+  <meta property="og:description" content="Browse Pokémon TCG art by artist and discover panoramic multi-card scenes." />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#" onclick="switchView('artists'); return false;">
+        <div class="nav-logo-icon">🎴</div>
+        TCG Art Gallery
+      </a>
+
+      <div class="nav-tabs">
+        <button class="nav-tab active" data-view="artists">Artists</button>
+        <button class="nav-tab" data-view="scenes">Scene Sets</button>
+        <button class="nav-tab" data-view="about">About</button>
+      </div>
+
+      <div class="nav-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          id="nav-search-input"
+          type="search"
+          placeholder="Search artists or cards…"
+          autocomplete="off"
+        />
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ ARTISTS VIEW ============ -->
+  <div id="view-artists" class="view active">
+    <div class="hero">
+      <h1>Pokémon TCG Art Gallery</h1>
+      <p>Explore the incredible artwork behind every card — browse by artist and discover the panoramic scenes that span multiple cards.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="stat-artists">12</div>
+          <div class="hero-stat-label">Artists</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="stat-scenes">7</div>
+          <div class="hero-stat-label">Scene Sets</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">20K+</div>
+          <div class="hero-stat-label">Cards</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="section-header">
+        <span class="section-title">Browse Artists</span>
+        <span class="section-count" id="artists-count">12 artists</span>
+      </div>
+      <div id="artists-grid" class="artist-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SCENE SETS VIEW ============ -->
+  <div id="view-scenes" class="view">
+    <div class="main">
+      <div class="section-header">
+        <span class="section-title">Panoramic Scene Sets</span>
+        <span class="section-count" id="scenes-count">7 sets</span>
+      </div>
+
+      <div class="scenes-intro">
+        <div class="scenes-intro-icon">🖼</div>
+        <div class="scenes-intro-text">
+          <h3>Multi-Card Panoramas</h3>
+          <p>
+            Some Pokémon TCG sets feature cards whose illustrations connect to form a single larger scene.
+            Click <strong>Assemble Scene</strong> on any set below to watch the cards snap together and
+            reveal the full panoramic artwork.
+          </p>
+        </div>
+      </div>
+
+      <div id="scenes-list">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ABOUT VIEW ============ -->
+  <div id="view-about" class="view">
+    <div class="main">
+      <div class="about-content">
+        <div class="about-section">
+          <h2>About This Gallery</h2>
+          <p>
+            The Pokémon Trading Card Game has been home to extraordinary artwork since 1996.
+            This gallery celebrates the artists who bring Pokémon to life on cardboard —
+            from the iconic original Base Set illustrators to modern digital artists.
+          </p>
+          <p>
+            Card data and images are sourced in real-time from the
+            <a href="https://pokemontcg.io/" target="_blank" rel="noopener">Pokémon TCG API</a>,
+            a community-maintained database of all Pokémon TCG cards.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2>Features</h2>
+          <ul>
+            <li><strong>Browse by Artist</strong> — Click any artist card to see every card they've illustrated, pulled live from the TCG API.</li>
+            <li><strong>Panoramic Scene Sets</strong> — Curated sets of cards whose artwork connects into a larger illustration. Use the Assemble button to see them merge.</li>
+            <li><strong>Card Lightbox</strong> — Click any card for a full-size view. Use arrow keys or buttons to navigate between cards.</li>
+            <li><strong>Search</strong> — Filter artists by name, tags, or description using the search bar.</li>
+          </ul>
+        </div>
+
+        <div class="about-section">
+          <h2>Notable Pokémon TCG Artists</h2>
+          <p>
+            The TCG has featured hundreds of artists over its 28+ year history. Some of the most celebrated include
+            <strong>Mitsuhiro Arita</strong> (the original Charizard), <strong>Yuka Morii</strong> (clay sculptures),
+            <strong>5ban Graphics</strong> (sleek EX/GX full arts), and <strong>Tomokazu Komiya</strong>
+            (beloved for cozy storybook scenes).
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2>About Scene Sets</h2>
+          <p>
+            Multi-card panoramas have been a beloved feature of the Pokémon TCG since the early sets.
+            Illustrators design adjacent cards so that when placed side by side, their backgrounds
+            merge into a single continuous landscape — a reward for collectors who hunt down complete sets.
+          </p>
+          <p>
+            Notable examples include the <em>Cosmic Eclipse</em> trainer full-art celebration scene,
+            the <em>Pokémon 151</em> ghost-type evolutionary trio, and the <em>Evolving Skies</em>
+            Dragon-type sky panorama.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2>Data & Attribution</h2>
+          <p>
+            All card data and images are © The Pokémon Company International.
+            This is a fan-made gallery and is not affiliated with or endorsed by Nintendo, Game Freak, or TPC.
+          </p>
+          <div class="about-badge">
+            <span>🔌</span>
+            Powered by the <a href="https://pokemontcg.io/" target="_blank" rel="noopener">Pokémon TCG API</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Card viewer">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" class="lightbox-img" alt="" />
+      <div class="lightbox-info">
+        <div class="lightbox-name" id="lightbox-name"></div>
+        <div class="lightbox-meta" id="lightbox-meta"></div>
+      </div>
+      <div class="lightbox-nav">
+        <button class="lightbox-nav-btn" id="lb-prev">← Previous</button>
+        <button class="lightbox-nav-btn" id="lb-next">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
