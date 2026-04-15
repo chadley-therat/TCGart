@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dir \"C:\\\\Users\\\\chadl\\\\Documents\\\\GitHub\\\\TCGart\")"
+      "Bash(dir \"C:\\\\Users\\\\chadl\\\\Documents\\\\GitHub\\\\TCGart\")",
+      "WebSearch",
+      "WebFetch(domain:bulbapedia.bulbagarden.net)",
+      "WebFetch(domain:www.artofpkm.com)",
+      "WebFetch(domain:www.thepricedex.com)",
+      "WebFetch(domain:serebii.net)",
+      "WebFetch(domain:www.pokebeach.com)"
     ]
   }
 }
